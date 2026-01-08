@@ -1,7 +1,6 @@
-import Link from "next/link";
+import BannerSlider from "@/components/banner-slider";
 import { NavigationMenuDemo } from "@/components/navbar";
 import { Geist, Geist_Mono, Inter, Ubuntu } from "next/font/google";
-import BannerSlider from "@/components/banner-slider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,13 +30,15 @@ export default function PagesLayout({
 }) {
   return (
     <div
-      className={`${inter.className} ${geistMono.variable} antialiased z-999 relative`}
+      className={`${inter.className} ${geistMono.variable} antialiased z-20 relative`}
     >
       <div className="fixed top-0 left-0 w-full z-[1000] bg-background/95 backdrop-blur-sm border-b border-b-slate-200/50">
         <NavigationMenuDemo />
         <BannerSlider />
       </div>
-      <div className="absolute pt-27 ">{children}</div>
+      <div className="pt-27 w-screen flex items-center justify-center">
+        {children}
+      </div>
     </div>
   );
 }

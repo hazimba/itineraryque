@@ -1,26 +1,33 @@
+import { Button } from "@/components/ui/button";
 import ModeToggle from "@/components/ui/mode-toggle";
+import { User } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="flex min-h-screen items-center justify-center bg-white font-sans dark:bg-black relative">
+      <Image
+        src="/bg-3.jpeg"
+        alt="Background"
+        fill
+        className="object-cover object-center z-0 opacity-10"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/1 z-10" />
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-56 md:px-16 px-6 sm:items-start z-20 relative">
         <div className="flex w-full items-center justify-between">
-          <Image
-            className="dark:invert"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={100}
-            height={20}
-            priority
-          />
-          <ModeToggle toggle />
+          <div className="w-full flex-1"></div>
+          <div className="flex items-center gap-6 justify-between">
+            <Link href="/login">Admin Login</Link>
+            <ModeToggle toggle />
+          </div>
         </div>
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+          <h1 className="md:text-3xl text-lg text-left w-full font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             TM TOURS & TRAVEL
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="max-w-md md:text-lg text-sm text-justify md:text-left leading-8 text-zinc-600 dark:text-zinc-400">
             TM Tours is a leading Muslim Tour Operator established since 1991
             with main activities that involving Inbound/Outbound Flight Tickets,
             Inbound/Outbound Tour Holiday Packages, Umrah, Hajj, MICE,
@@ -29,21 +36,10 @@ export default function Home() {
             markets.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="/dashboard"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Dashboard
-          </a>
+        <Link className="flex" href="/package" rel="noopener noreferrer">
+          <Button>Explore Packages</Button>
+        </Link>
+        {/* <div className="flex flex-row gap-4 text-base font-medium">
           <a
             className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
             href="/package"
@@ -51,7 +47,7 @@ export default function Home() {
           >
             Package
           </a>
-        </div>
+        </div> */}
       </main>
     </div>
   );
