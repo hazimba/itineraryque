@@ -12,14 +12,10 @@ import {
 import { House } from "lucide-react";
 import { DropdownMenuDemo } from "./menu-icon-dropdown";
 import ModeToggle from "./ui/mode-toggle";
+import { useUserStore } from "@/lib/store/user";
 
 export function NavigationMenuDemo() {
-  // const [mounted, setMounted] = React.useState(false);
-  // React.useEffect(() => {
-  //   setMounted(true);
-  // }, []);
-  // const isMobile = useMobileDetectClient();
-  // if (!mounted) return <Spinner />;
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
 
   return (
     <NavigationMenu className="w-screen py-2">
@@ -36,12 +32,14 @@ export function NavigationMenuDemo() {
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className="flex items-center gap-4 hidden md:flex">
-            <NavigationMenuLink
-              asChild
-              className={`${navigationMenuTriggerStyle()}`}
-            >
-              <Link href="/dashboard">Dashboard</Link>
-            </NavigationMenuLink>
+            {!isLoggedIn && (
+              <NavigationMenuLink
+                asChild
+                className={`${navigationMenuTriggerStyle()}`}
+              >
+                <Link href="/dashboard">Dashboard</Link>
+              </NavigationMenuLink>
+            )}
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}

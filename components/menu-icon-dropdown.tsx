@@ -4,17 +4,27 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useUserStore } from "@/lib/store/user";
+import { toast } from "sonner";
 
 export function DropdownMenuDemo() {
   const router = useRouter();
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const setIsLoggedIn = useUserStore((state) => state.setIsLoggedIn);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    toast.success("Logging out...");
+    setTimeout(() => {
+      router.push("/");
+    }, 1000);
+  };
 
   return (
     <DropdownMenu>
@@ -49,14 +59,19 @@ export function DropdownMenuDemo() {
           Contact Us!
         </DropdownMenuItem>
         <DropdownMenuItem disabled>API</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onSelect={() => router.push("/logout")}
-          className="cursor-pointer"
-        >
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
+
+        {isLoggedIn && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onSelect={() => handleLogout()}
+              className="cursor-pointer"
+            >
+              Log out
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
