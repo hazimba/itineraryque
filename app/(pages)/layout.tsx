@@ -1,5 +1,6 @@
 import BannerSlider from "@/components/banner-slider";
 import { NavigationMenuDemo } from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import { Geist, Geist_Mono, Inter, Ubuntu } from "next/font/google";
 
 const geistSans = Geist({
@@ -32,6 +33,7 @@ export default function PagesLayout({
     <div
       className={`${inter.className} ${geistMono.variable} antialiased z-20 relative`}
     >
+      <Toaster position="top-center" />
       <div className="fixed top-0 left-0 w-full z-[1000] bg-background/95 backdrop-blur-sm border-b border-b-slate-200/50">
         <NavigationMenuDemo />
         <BannerSlider />
