@@ -32,7 +32,7 @@ export function NavigationMenuDemo() {
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className="flex items-center gap-4 hidden md:flex">
-            {!isLoggedIn && (
+            {isLoggedIn && (
               <NavigationMenuLink
                 asChild
                 className={`${navigationMenuTriggerStyle()}`}
