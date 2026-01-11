@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { places } from "@/lib/const";
 import { useEffect, useState } from "react";
+import { Package } from "@/lib/types";
 
 const PackagePage = () => {
   const fetchPackages = async () => {
@@ -12,7 +12,7 @@ const PackagePage = () => {
     return response.json();
   };
 
-  const [packages, setPackages] = useState([]);
+  const [packages, setPackages] = useState<Package[]>([]);
 
   console.log("Fetched packages:", packages);
 
