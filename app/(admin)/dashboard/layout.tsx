@@ -1,3 +1,5 @@
+import { Toaster } from "@/components/ui/sonner";
+import Link from "next/link";
 import React from "react";
 
 export default function DashboardLayout({
@@ -21,7 +23,6 @@ export default function DashboardLayout({
   ];
   return (
     <div className="w-screen">
-      {/* Sidebar */}
       <aside
         style={{
           width: "220px",
@@ -37,9 +38,12 @@ export default function DashboardLayout({
           zIndex: 100,
         }}
       >
-        <h2 style={{ marginBottom: "2rem", fontWeight: "bold" }}>
-          Admin Panel
-        </h2>
+        <div className="flex flex-col items-start mb-8">
+          <h2 style={{ marginBottom: "2rem", fontWeight: "bold" }}>
+            Admin Panel
+          </h2>
+          <Link href="/">Mainpage</Link>
+        </div>
         <nav>
           {navOptions.map((option) => (
             <div
@@ -62,34 +66,9 @@ export default function DashboardLayout({
               )}
             </div>
           ))}
-          {/* <ul style={{ listStyle: "none", padding: 0 }}>
-            <li style={{ marginBottom: "1rem" }}>
-              <a
-                href="/dashboard"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Dashboard
-              </a>
-            </li>
-            <li style={{ marginBottom: "1rem" }}>
-              <a
-                href="/dashboard/users"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Users
-              </a>
-            </li>
-            <li>
-              <a
-                href="/dashboard/settings"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Settings
-              </a>
-            </li>
-          </ul> */}
         </nav>
       </aside>
+      <Toaster position="top-center" />
       <main
         style={{
           flex: 1,

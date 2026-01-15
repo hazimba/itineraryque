@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import ModeToggle from "@/components/ui/mode-toggle";
+import { Toaster } from "@/components/ui/sonner";
 import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,18 +28,19 @@ export default function Home() {
           <h1 className="md:text-3xl text-lg text-left w-full font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             TM TOURS & TRAVEL
           </h1>
-          <p className="max-w-md md:text-lg text-sm text-justify md:text-left leading-8 text-zinc-600 dark:text-zinc-400">
+          <div className="max-w-md md:text-lg text-sm text-justify md:text-left leading-8 text-zinc-600 dark:text-zinc-400">
             TM Tours is a leading Muslim Tour Operator established since 1991
             with main activities that involving Inbound/Outbound Flight Tickets,
             Inbound/Outbound Tour Holiday Packages, Umrah, Hajj, MICE,
             Accommodation, Transport Rental (Car, Van, Bus, Limousine) as well
             as Programs Tailor Made as we provide for domestic and international
             markets.
-          </p>
+          </div>
         </div>
         <Link className="flex" href="/package" rel="noopener noreferrer">
           <Button>Explore Packages</Button>
         </Link>
+        <Toaster />
         {/* <div className="flex flex-row gap-4 text-base font-medium">
           <a
             className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
