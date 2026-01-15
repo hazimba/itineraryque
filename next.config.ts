@@ -39,6 +39,9 @@ const nextConfig: NextConfig = {
       new URL(
         "https://images.pexels.com/photos/1539577/pexels-photo-1539577.jpeg"
       ),
+      new URL(
+        "https://www.tourismperakmalaysia.com/wp-content/uploads/2023/06/Istana-Kenangan-Kuala-Kangsar-1200x675.jpg"
+      ),
     ],
   },
 };
