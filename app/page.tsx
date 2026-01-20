@@ -1,11 +1,28 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ModeToggle from "@/components/ui/mode-toggle";
 import { Toaster } from "@/components/ui/sonner";
-import { User } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "@/components/ui/dialog"; // Import Dialog components
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+
+  // Open the dialog as soon as the page loads
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-white font-sans dark:bg-black relative">
       <Image
@@ -16,7 +33,7 @@ export default function Home() {
         priority
       />
       <div className="absolute inset-0 bg-black/1 z-10" />
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-56 md:px-16 px-6 sm:items-start z-20 relative">
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-56 md:px-16 px-6 sm:items-start sm:text-left z-20 relative">
         <div className="flex w-full items-center justify-between">
           <div className="w-full flex-1"></div>
           <div className="flex items-center gap-6 justify-between">
@@ -40,16 +57,25 @@ export default function Home() {
         <Link className="flex" href="/package" rel="noopener noreferrer">
           <Button>Explore Packages</Button>
         </Link>
+
         <Toaster />
-        {/* <div className="flex flex-row gap-4 text-base font-medium">
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="/package"
-            rel="noopener noreferrer"
-          >
-            Package
-          </a>
-        </div> */}
+
+        {/* Dialog that opens on page load */}
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Welcome to TM Tours & Travel</DialogTitle>
+              <DialogDescription>
+                Check out our latest packages and offers. FORM HERE
+              </DialogDescription>
+            </DialogHeader>
+            <div className="mt-4 flex justify-end">
+              <DialogClose asChild>
+                <Button variant="outline">Close</Button>
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </Dialog>
       </main>
     </div>
   );
